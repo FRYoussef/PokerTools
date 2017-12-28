@@ -1,4 +1,4 @@
-package model.representation;
+package com.example.youss.pokertools.model.representation;
 
 public class Card implements Comparable<Card>{
 

@@ -1,5 +1,4 @@
-package control.ObserverPatron;
-
+package com.example.youss.pokertools.model.ObserverPatron;
 
 import java.util.Observable;
 

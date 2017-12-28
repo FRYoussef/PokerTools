@@ -1,8 +1,8 @@
-package model.processor;
+package com.example.youss.pokertools.model.processor;
 
-import model.representation.Card;
-import model.representation.game.HandScore;
-import model.representation.game.Play;
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.game.HandScore;
+import com.example.youss.pokertools.model.representation.game.Play;
 
 import java.util.ArrayList;
 

@@ -1,13 +1,13 @@
-package model.processor;
+package com.example.youss.pokertools.model.processor;
+
+import com.example.youss.pokertools.model.ObserverPatron.HandlerObserver;
+import com.example.youss.pokertools.model.processor.concurrency.Shared;
 
 import java.util.TimerTask;
 
-import control.ObserverPatron.HandlerObserver;
-import model.processor.concurrency.Shared;
-
 public class UpdateEquities extends TimerTask{
 	
-	private Shared sharedData; 
+	private Shared sharedData;
 	public UpdateEquities(Shared sharedData){
 		this.sharedData = sharedData;
 	}

@@ -1,10 +1,10 @@
-package model.representation.game;
+package com.example.youss.pokertools.model.representation.game;
 
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.Suit;
 
 import java.util.HashSet;
 import java.util.Random;
-import model.representation.Card;
-import model.representation.Suit;
 
 public class Deck {
 	private HashSet<Card> cards;
@@ -27,7 +27,7 @@ public class Deck {
 	}
 	
 	private void fill () {
-		for (int i = 0 ; i < Suit.NUM_SUIT; i++) {
+		for (int i = 0; i < Suit.NUM_SUIT; i++) {
 			Suit s = Suit.getFromInt(i);
 			for (int j = 0; j < Card.NUM_CARDS; j++) {
 				try {

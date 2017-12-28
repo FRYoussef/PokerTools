@@ -1,17 +1,16 @@
-package model.processor.concurrency;
+package com.example.youss.pokertools.model.processor.concurrency;
+
+import com.example.youss.pokertools.model.ObserverPatron.HandlerObserver;
+import com.example.youss.pokertools.model.processor.HandProcessor;
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.Player;
+import com.example.youss.pokertools.model.representation.game.Deck;
+import com.example.youss.pokertools.model.representation.game.HandScore;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-
-
-import control.ObserverPatron.HandlerObserver;
-import model.processor.HandProcessor;
-import model.representation.Card;
-import model.representation.Player;
-import model.representation.game.Deck;
-import model.representation.game.HandScore;
 
 public class HEWorker implements Runnable{
 	

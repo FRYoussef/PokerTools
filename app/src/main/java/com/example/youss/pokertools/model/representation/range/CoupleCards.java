@@ -1,7 +1,8 @@
-package model.representation.range;
+package com.example.youss.pokertools.model.representation.range;
 
-import javafx.util.Pair;
-import model.representation.Card;
+import android.util.Pair;
+
+import com.example.youss.pokertools.model.representation.Card;
 
 import java.util.ArrayList;
 import java.util.HashSet;

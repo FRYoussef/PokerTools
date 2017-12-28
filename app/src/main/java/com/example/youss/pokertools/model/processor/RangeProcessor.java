@@ -1,13 +1,13 @@
-package model.processor;
+package com.example.youss.pokertools.model.processor;
 
-import model.representation.Card;
-import model.representation.Draws;
-import model.representation.Suit;
-import model.representation.game.HandScore;
-import model.representation.game.Play;
-import model.representation.range.CoupleCards;
-import model.representation.range.PairType;
-import model.representation.Stat;
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.Draws;
+import com.example.youss.pokertools.model.representation.Stat;
+import com.example.youss.pokertools.model.representation.Suit;
+import com.example.youss.pokertools.model.representation.game.HandScore;
+import com.example.youss.pokertools.model.representation.game.Play;
+import com.example.youss.pokertools.model.representation.range.CoupleCards;
+import com.example.youss.pokertools.model.representation.range.PairType;
 
 import java.util.ArrayList;
 import java.util.HashSet;
