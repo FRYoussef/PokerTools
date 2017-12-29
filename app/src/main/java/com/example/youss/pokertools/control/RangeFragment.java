@@ -1,113 +1,408 @@
 package com.example.youss.pokertools.control;
 
-import android.content.Context;
-import android.net.Uri;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.example.youss.pokertools.R;
+import com.example.youss.pokertools.model.ObserverPatron.HandlerObserver;
+import com.example.youss.pokertools.model.ObserverPatron.OSolution;
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.range.CoupleCards;
+import com.example.youss.pokertools.model.representation.range.Range;
+import com.example.youss.pokertools.model.utils.EntryParser;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RangeFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link RangeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class RangeFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Observable;
+import java.util.Observer;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnEditorAction;
+import butterknife.Unbinder;
 
-    private OnFragmentInteractionListener mListener;
 
-    public RangeFragment() {
-        // Required empty public constructor
-    }
+public class RangeFragment extends Fragment implements Observer{
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RangeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RangeFragment newInstance(String param1, String param2) {
-        RangeFragment fragment = new RangeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private static final int MAX_BOARD_CARDS = 5;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private Unbinder unbinder;
+    @BindView(R.id._glRanking) GridLayout _glRanking;
+    @BindView(R.id._etPercentage) EditText _etPercentage;
+    @BindView(R.id._sbSlider) SeekBar _sbSlider;
+    @BindView(R.id._btStats) Button _btStats;
+    @BindView(R.id._glBoardsCards) GridLayout _glBoardsCards;
+    private PersonalRangeDialog personalRangeDialog;
+
+    private HashSet<String> hsBoardCards = null;
+    private HashSet<String> hsCouples = null;
+    private int numBoardCards = 0;
+    private boolean sklanskyRanking = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_range, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_range, container, false);
+        unbinder = ButterKnife.bind(this, view);
+
+        hsBoardCards = new HashSet<>(MAX_BOARD_CARDS);
+        hsCouples = new HashSet<>();
+
+        addListenerBoardCards();
+        addListenerSeekBar();
+        drawColorCells();
+        HandlerObserver.addObserver(this);
+        personalRangeDialog = new PersonalRangeDialog();
+        return view;
     }
 
-    public void onClickStats(View view) {
+    private void addListenerSeekBar() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                _sbSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}
 
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {}
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        _etPercentage.setText(seekBar.getProgress()+"%");
+                        showRange();
+                    }
+                });
+            }
+        });
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    private void addListenerBoardCards(){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < _glBoardsCards.getChildCount(); i++) {
+                    _glBoardsCards.getChildAt(i).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            onClickBoardCard((TextView)view);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    private void onClickBoardCard(TextView view){
+
+        char suit = view.getText().charAt(1);
+        int selected = 0;
+        int nonSelected = 0;
+        switch (suit){
+            case 'h':
+                selected = getResources().getColor(R.color.heartsSelected);
+                nonSelected = getResources().getColor(R.color.hearts);
+                break;
+            case 'c':
+                selected = getResources().getColor(R.color.clubsSelected);
+                nonSelected = getResources().getColor(R.color.clubs);
+                break;
+            case 'd':
+                selected = getResources().getColor(R.color.diamondsSelected);
+                nonSelected = getResources().getColor(R.color.diamonds);
+                break;
+            case 's':
+                selected = getResources().getColor(R.color.spadesSelected);
+                nonSelected = getResources().getColor(R.color.spades);
+                break;
         }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+        if(hsBoardCards.contains(view.getText().toString())){
+            hsBoardCards.remove(view.getText().toString());
+            numBoardCards--;
+            view.setBackgroundColor(nonSelected);
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+        else if(numBoardCards < MAX_BOARD_CARDS){
+            hsBoardCards.add(view.getText().toString());
+            numBoardCards++;
+            view.setBackgroundColor(selected);
+        }
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * It draws the color cells of the ranking
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    private void drawColorCells(){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < Card.NUM_CARDS; i++) {
+                    for (int j = 0; j < Card.NUM_CARDS; j++) {
+                        int color = 0;
+                        if( i == j)
+                            color = getResources().getColor(R.color.pairCell);
+                        else if( i > j)
+                            color = getResources().getColor(R.color.offSuitedCell);
+                        else if( i < j)
+                            color = getResources().getColor(R.color.suitedCell);
+
+                        _glRanking.getChildAt(i*Card.NUM_CARDS+j).setBackgroundColor(color);
+                    }
+                }
+            }
+        });
+    }
+
+    @OnClick(R.id._btStats)
+    public void onClickStats() {
+
+    }
+
+    @OnEditorAction(R.id._etPercentage)
+    public boolean onPercentageChange(int i, KeyEvent key){
+        if(i== EditorInfo.IME_ACTION_DONE)
+            showRange();
+        return false;
+    }
+
+    private void showRange(){
+        try{
+            int val = Integer.parseInt(_etPercentage.getText().toString().split("%")[0]);
+            if(val < 0 || val > 100)
+                throw new NumberFormatException("Not in range");
+
+            _etPercentage.setTextColor(getResources().getColor(R.color.black));
+            _etPercentage.setText(val+"%");
+            _sbSlider.setProgress(val);
+
+            drawColorCells();
+            hsCouples.clear();
+
+            if (sklanskyRanking)
+                selectElemsMatrix(CoupleCards.coupleCardsToMatrix(Range.rangeToCoupleCards(Range.getRangeArraySklansky(val))));
+            else
+                selectElemsMatrix(CoupleCards.coupleCardsToMatrix(Range.rangeToCoupleCards(Range.getRangeArrayStrength(val))));
+
+        }catch (Exception e){
+            Log.e("Show range error", e.getMessage());
+            _etPercentage.setTextColor(getResources().getColor(R.color.errorColor));
+        }
+    }
+
+    /**
+     * It select the elements in the grid
+     * @param pairs
+     */
+    private void selectElemsMatrix(final ArrayList<Pair<Integer, Integer>> pairs){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (Pair<Integer, Integer> p : pairs) {
+                    _glRanking.getChildAt(p.first * Card.NUM_CARDS + p.second).setBackgroundColor(getResources().getColor(R.color.selected));
+                    hsCouples.add(((TextView) _glRanking.getChildAt(p.first * Card.NUM_CARDS + p.second)).getText().toString());
+                }
+            }
+        });
+    }
+
+    private void clear(){
+        hsCouples.clear();
+        drawColorCells();
+        _sbSlider.setProgress(0);
+        _etPercentage.setText("0%");
+    }
+
+    private void onClickClearAll(){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                clear();
+            }
+        });
+    }
+
+    private void onClickSelectAll(){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < Card.NUM_CARDS; i++) {
+                    for (int j = 0; j < Card.NUM_CARDS; j++) {
+                        _glRanking.getChildAt(i*Card.NUM_CARDS+j).setBackgroundColor(getResources().getColor(R.color.selected));
+                        hsCouples.add(((TextView)_glRanking.getChildAt(i*Card.NUM_CARDS+j)).getText().toString());
+                    }
+                }
+                updatePercentage(hsCouples.size());
+                _sbSlider.setProgress(100);
+            }
+        });
+    }
+
+    private void onClickSuited(){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < Card.NUM_CARDS; i++) {
+                    for (int j = i+1; j < Card.NUM_CARDS; j++) {
+                        _glRanking.getChildAt(i*Card.NUM_CARDS+j).setBackgroundColor(getResources().getColor(R.color.selected));
+                        hsCouples.add(((TextView)_glRanking.getChildAt(i*Card.NUM_CARDS+j)).getText().toString());
+                    }
+                }
+                updatePercentage(hsCouples.size());
+            }
+        });
+    }
+
+    private void onClickBroadway(){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < Card.NUM_CARDS; i++) {
+                    for (int j = 0; j < i; j++) {
+                        _glRanking.getChildAt(i*Card.NUM_CARDS+j).setBackgroundColor(getResources().getColor(R.color.selected));
+                        hsCouples.add(((TextView)_glRanking.getChildAt(i*Card.NUM_CARDS+j)).getText().toString());
+                    }
+                }
+                updatePercentage(hsCouples.size());
+            }
+        });
+    }
+
+    private void onClickPairs(){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < Card.NUM_CARDS; i++) {
+                    _glRanking.getChildAt(i*Card.NUM_CARDS+i).setBackgroundColor(getResources().getColor(R.color.selected));
+                    hsCouples.add(((TextView)_glRanking.getChildAt(i*Card.NUM_CARDS+i)).getText().toString());
+                }
+                updatePercentage(hsCouples.size());
+            }
+        });
+    }
+
+    private void onClickRanking(final boolean ranking){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                sklanskyRanking = ranking;
+                showRange();
+            }
+        });
+    }
+
+    private void onClickPersonalRanking(final EntryParser parser){
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                clear();
+                selectElemsMatrix(CoupleCards.coupleCardsToMatrix(Range.rangeToCoupleCards(parser.getRangeEntry())));
+                updatePercentage(hsCouples.size());
+            }
+        });
+    }
+
+    private void updatePercentage(int num){
+        _etPercentage.setText( (int)Math.floor((num*100) / CoupleCards.NUM_COUPLE_CARDS) + "%");
+    }
+
+    @Override
+    public void update(Observable arg0, Object o) {
+        OSolution sol = (OSolution) arg0;
+
+        if(sol.getState() == OSolution.NOTIFY_RANGE_CLEAR)
+            onClickClearAll();
+        else if(sol.getState() == OSolution.NOTIFY_RANGE_SELECT_ALL)
+            onClickSelectAll();
+        else if(sol.getState() == OSolution.NOTIFY_RANGE_SELECT_SUITED)
+            onClickSuited();
+        else if(sol.getState() == OSolution.NOTIFY_RANGE_SELECT_BROADWAY)
+            onClickBroadway();
+        else if(sol.getState() == OSolution.NOTIFY_RANGE_SELECT_PAIR)
+            onClickPairs();
+        else if(sol.getState() == OSolution.NOTIFY_RANGE_CHANGE_RANKING)
+            onClickRanking((Boolean)o);
+        else if(sol.getState() == OSolution.NOTIFY_RANGE_PERSONAL_RANGE_REQUEST)
+            personalRangeDialog.show(getActivity().getSupportFragmentManager(), null);
+
+        else if(sol.getState() == OSolution.NOTIFY_RANGE_PERSONAL_RANGE_REPONSE)
+            onClickPersonalRanking((EntryParser) o);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        HandlerObserver.removeObserver(this);
+        unbinder.unbind();
+    }
+
+    public static class PersonalRangeDialog extends DialogFragment{
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+
+            builder.setView(inflater.inflate(R.layout.alertdialog_personal_range, null))
+            .setTitle(R.string.personal_range_dialog_title)
+            .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                }
+            }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            return builder.create();
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            final AlertDialog d = (AlertDialog)getDialog();
+            if(d != null)
+            {
+                Button positiveButton = d.getButton(Dialog.BUTTON_POSITIVE);
+                positiveButton.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v) {
+                        TextView tv = d.findViewById(R.id._etPersonalRange);
+                        String entry = tv.getText().toString();
+                        if(entry.isEmpty())
+                            return;
+
+                        EntryParser entryParser = new EntryParser(entry);
+                        if(!entryParser.parseEntry()){
+                            tv.setTextColor(getResources().getColor(R.color.errorColor));
+                            return;
+                        }
+                        HandlerObserver.getoSolution().notifyPersonalRangeReponse(entryParser);
+                        d.dismiss();
+                    }
+                });
+            }
+        }
     }
 }

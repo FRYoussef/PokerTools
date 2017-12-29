@@ -65,7 +65,13 @@ public class Card implements Comparable<Card>{
 			return res;
 		}
 	}
-	
+
+	public static char valueToChar(int value) throws Exception {
+		if (value < 0 || value > 12)
+			throw new Exception("Card ctor.: Card value must be within [0,12]");
+		return lut[value];
+	}
+
 	//inherited:
 	@Override
 	public String toString() {

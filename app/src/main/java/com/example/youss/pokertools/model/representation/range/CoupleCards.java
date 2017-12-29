@@ -1,6 +1,6 @@
 package com.example.youss.pokertools.model.representation.range;
 
-import android.util.Pair;
+import android.support.v4.util.Pair;
 
 import com.example.youss.pokertools.model.representation.Card;
 
