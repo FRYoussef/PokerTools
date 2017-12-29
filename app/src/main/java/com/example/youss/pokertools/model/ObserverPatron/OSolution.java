@@ -18,6 +18,7 @@ public class OSolution extends Observable{
 	public static final int NOTIFY_RANGE_CHANGE_RANKING = 10;
 	public static final int NOTIFY_RANGE_PERSONAL_RANGE_REQUEST = 11;
 	public static final int NOTIFY_RANGE_PERSONAL_RANGE_REPONSE = 12;
+	public static final int NOTIFY_RANGE_GENERATE = 13;
 
 	private int state = -1;
 
@@ -97,6 +98,12 @@ public class OSolution extends Observable{
 		state = NOTIFY_RANGE_PERSONAL_RANGE_REPONSE;
 		setChanged();
 		notifyObservers(parser);
+	}
+
+	public void notifyGenerate(){
+		state = NOTIFY_RANGE_GENERATE;
+		setChanged();
+		notifyObservers();
 	}
 
 	public int getState() {

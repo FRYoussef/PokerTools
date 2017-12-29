@@ -19,4 +19,9 @@
     <string name="personal_range_dialog_title">Choose Your Range</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
+    <string name="generate_the_current_range">Generate the current range</string>
+    <string name="title_activity_stats">StatsActivity</string>
+    <string name="title_play_chart">Play Stats</string>
+    <string name="title_draw_chart">Draws Stats</string>
+    <string name="no_draws">No Draws</string>
 </resources>

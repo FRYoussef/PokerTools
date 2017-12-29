@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity implements Observer{
             case R.id.selectPersonalRange:
                 HandlerObserver.getoSolution().notifyPersonalRangeRequest();
                 return true;
+            case R.id.generateRange:
+                HandlerObserver.getoSolution().notifyGenerate();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

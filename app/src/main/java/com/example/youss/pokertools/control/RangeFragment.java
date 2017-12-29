@@ -1,10 +1,13 @@
 package com.example.youss.pokertools.control;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
@@ -24,7 +27,9 @@ import android.widget.TextView;
 import com.example.youss.pokertools.R;
 import com.example.youss.pokertools.model.ObserverPatron.HandlerObserver;
 import com.example.youss.pokertools.model.ObserverPatron.OSolution;
+import com.example.youss.pokertools.model.processor.RangeProcessor;
 import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.Suit;
 import com.example.youss.pokertools.model.representation.range.CoupleCards;
 import com.example.youss.pokertools.model.representation.range.Range;
 import com.example.youss.pokertools.model.utils.EntryParser;
@@ -44,6 +49,9 @@ import butterknife.Unbinder;
 public class RangeFragment extends Fragment implements Observer{
 
     private static final int MAX_BOARD_CARDS = 5;
+    public static final String KEY_RANGE = "key_range";
+    public static final String KEY_PLAY_STATS = "key_play_stats";
+    public static final String KEY_DRAW_STATS = "key_draw_stats";
 
     private Unbinder unbinder;
     @BindView(R.id._glRanking) GridLayout _glRanking;
@@ -52,11 +60,13 @@ public class RangeFragment extends Fragment implements Observer{
     @BindView(R.id._btStats) Button _btStats;
     @BindView(R.id._glBoardsCards) GridLayout _glBoardsCards;
     private PersonalRangeDialog personalRangeDialog;
+    private ShowRangeDialog showRangeDialog;
 
     private HashSet<String> hsBoardCards = null;
     private HashSet<String> hsCouples = null;
     private int numBoardCards = 0;
     private boolean sklanskyRanking = true;
+    private RangeProcessor rP = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,6 +83,7 @@ public class RangeFragment extends Fragment implements Observer{
         drawColorCells();
         HandlerObserver.addObserver(this);
         personalRangeDialog = new PersonalRangeDialog();
+        showRangeDialog = new ShowRangeDialog();
         return view;
     }
 
@@ -174,7 +185,29 @@ public class RangeFragment extends Fragment implements Observer{
 
     @OnClick(R.id._btStats)
     public void onClickStats() {
+        if(numBoardCards < 3 || hsCouples.size() == 0)
+            return;
 
+        try{
+            HashSet<Card> hsC = new HashSet<>(hsBoardCards.size());
+            for (String st: hsBoardCards)
+                hsC.add(new Card(Card.charToValue(st.charAt(0)), Suit.getFromChar(st.charAt(1))));
+
+            rP = new RangeProcessor(hsC, CoupleCards.toCoupleCards(hsCouples));
+            rP.run();
+
+            Intent intent = new Intent(getActivity(), StatsActivity.class);
+            intent.putParcelableArrayListExtra(KEY_PLAY_STATS, rP.getPlayStats());
+            intent.putParcelableArrayListExtra(KEY_DRAW_STATS, rP.getDrawStats());
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeCustomAnimation(getActivity()
+                    , R.anim.activity_chart_in, R.anim.activity_out);
+
+            startActivityForResult(intent, 1, options.toBundle());
+
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e("Error stats", e.getMessage());
+        }
     }
 
     @OnEditorAction(R.id._etPercentage)
@@ -324,6 +357,15 @@ public class RangeFragment extends Fragment implements Observer{
         _etPercentage.setText( (int)Math.floor((num*100) / CoupleCards.NUM_COUPLE_CARDS) + "%");
     }
 
+    private void onClickGenerate(){
+        if(hsCouples.size() > 0){
+            Bundle b = new Bundle();
+            b.putString(KEY_RANGE, Range.getRanks(hsCouples.toArray(new String[hsCouples.size()])));
+            showRangeDialog.setArguments(b);
+            showRangeDialog.show(getActivity().getSupportFragmentManager(), "generate");
+        }
+    }
+
     @Override
     public void update(Observable arg0, Object o) {
         OSolution sol = (OSolution) arg0;
@@ -341,10 +383,13 @@ public class RangeFragment extends Fragment implements Observer{
         else if(sol.getState() == OSolution.NOTIFY_RANGE_CHANGE_RANKING)
             onClickRanking((Boolean)o);
         else if(sol.getState() == OSolution.NOTIFY_RANGE_PERSONAL_RANGE_REQUEST)
-            personalRangeDialog.show(getActivity().getSupportFragmentManager(), null);
+            personalRangeDialog.show(getActivity().getSupportFragmentManager(), "personalRange");
 
         else if(sol.getState() == OSolution.NOTIFY_RANGE_PERSONAL_RANGE_REPONSE)
             onClickPersonalRanking((EntryParser) o);
+        else if(sol.getState() == OSolution.NOTIFY_RANGE_GENERATE)
+            onClickGenerate();
+
     }
 
     @Override
@@ -370,7 +415,6 @@ public class RangeFragment extends Fragment implements Observer{
             }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-
                 }
             });
 
@@ -403,6 +447,20 @@ public class RangeFragment extends Fragment implements Observer{
                     }
                 });
             }
+        }
+    }
+
+    public static class ShowRangeDialog extends DialogFragment {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(getArguments().getString(KEY_RANGE))
+                    .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {}
+                    });
+            return builder.create();
         }
     }
 }
