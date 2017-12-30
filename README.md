@@ -1,5 +1,5 @@
 # PokerTools
-An Android App that calculates the rage and the equity
+An Android App that calculates the range and the equity
 
 #### License: GPL v3
 #### Author:
