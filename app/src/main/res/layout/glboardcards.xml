@@ -8,60 +8,60 @@
     android:rowCount="4"
     android:background="@color/black">
 
-    <TextView android:text="Ah" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="Kh" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="Qh" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="Jh" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="Th" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="9h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="8h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="7h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="6h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="5h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="4h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="3h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
-    <TextView android:text="2h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/hearts"  android:layout_width="28dp"/>
+    <TextView android:text="Ah" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Kh" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Qh" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Jh" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Th" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="9h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="8h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="7h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="6h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="5h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="4h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="3h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="2h" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/hearts"  android:layout_width="25dp" android:textColor="@color/black"/>
 
-    <TextView android:text="Ac" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="Kc" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="Qc" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="Jc" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="Tc" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="9c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="8c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="7c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="6c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="5c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="4c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="3c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
-    <TextView android:text="2c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/clubs"  android:layout_width="28dp"/>
+    <TextView android:text="Ac" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Kc" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Qc" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Jc" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Tc" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="9c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="8c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="7c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="6c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="5c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="4c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="3c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="2c" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/clubs"  android:layout_width="25dp" android:textColor="@color/black"/>
 
-    <TextView android:text="Ad" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="Kd" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="Qd" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="Jd" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="Td" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="9d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="8d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="7d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="6d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="5d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="4d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="3d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
-    <TextView android:text="2d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/diamonds"  android:layout_width="28dp"/>
+    <TextView android:text="Ad" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Kd" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Qd" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Jd" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Td" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="9d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="8d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="7d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="6d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="5d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="4d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="3d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="2d" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/diamonds"  android:layout_width="25dp" android:textColor="@color/black"/>
 
-    <TextView android:text="As" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="Ks" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="Qs" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="Js" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="Ts" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="9s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="8s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="7s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="6s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="5s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="4s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="3s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
-    <TextView android:text="2s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18.5sp" android:background="@color/spades"  android:layout_width="28dp"/>
+    <TextView android:text="As" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Ks" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Qs" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Js" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="Ts" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="9s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="8s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="7s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="6s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="5s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="4s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="3s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
+    <TextView android:text="2s" android:layout_margin="0.5dp" android:textAlignment="center" android:textSize="18sp" android:background="@color/spades"  android:layout_width="25dp" android:textColor="@color/black"/>
 
 </GridLayout>

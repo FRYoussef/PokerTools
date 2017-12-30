@@ -9,1186 +9,1186 @@
     android:background="@color/black">
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="AA"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="AKs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="AQs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="AJs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="ATs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A9s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A8s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A7s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A6s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A5s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A4s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A3s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A2s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="AKo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="KK"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="KQs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="KJs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="KTs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K9s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K8s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K7s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K6s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K5s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K4s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K3s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K2s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="AQo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="KQo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="QQ"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="QJs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="QTs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q9s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q8s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q7s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q6s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q5s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q4s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q3s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q2s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="AJo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="KJo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="QJo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="JJ"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="JTs"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J9s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J8s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J7s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J6s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J5s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J4s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J3s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J2s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="ATo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="KTo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="QTo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="JTo"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="TT"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T9s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T8s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T7s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T6s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T5s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T4s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T3s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T2s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A9o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K9o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q9o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J9o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T9o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="99"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="98s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="97s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="96s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="95s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="94s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="93s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="92s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A8o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K8o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q8o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J8o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T8o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="98o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="88"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="87s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="86s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="85s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="84s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="83s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="82s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A7o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K7o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q7o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J7o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T7o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="97o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="87o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="77"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="76s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="75s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="74s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="73s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="72s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A6o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K6o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q6o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J6o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T6o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="96o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="86o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="76o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="66"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="65s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="64s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="63s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="62s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A5o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K5o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q5o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J5o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T5o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="95o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="85o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="75o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="65o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="55"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="54s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="53s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="52s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A4o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K4o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q4o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J4o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T4o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="94o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="84o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="74o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="64o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="54o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="44"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="43s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="42s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A3o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K3o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q3o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J3o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T3o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="93o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="83o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="73o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="63o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="53o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="43o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="33"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="32s"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="A2o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="K2o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="Q2o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="J2o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="T2o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="92o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="82o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="72o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="62o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="52o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="42o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="32o"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="29dp"
+        android:layout_width="25dp"
         android:layout_margin="0.5dp"
         android:text="22"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="13sp"  android:textColor="@color/black"/>
 
 </GridLayout>

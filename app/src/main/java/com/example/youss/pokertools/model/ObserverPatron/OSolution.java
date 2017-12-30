@@ -6,7 +6,7 @@ import java.util.Observable;
 
 public class OSolution extends Observable{
 	public static final int NOTIFY_EQUITY_PLAYER_CARDS = 0;
-	public static final int NOTIFY_EQUITY = 1;
+	public static final int NOTIFY_EQUITY_EQUITY_PLAYERS = 1;
 	public static final int NOTIFY_EQUITY_SIM = 2;
 	public static final int NOTIFY_EQUITY_FOLD = 3;
 	public static final int NOTIFY_PLAYER_CARDS_STRING = 4;
@@ -29,7 +29,7 @@ public class OSolution extends Observable{
     }
 
 	public void notifyEquity(double[] is){
-		state = NOTIFY_EQUITY;
+		state = NOTIFY_EQUITY_EQUITY_PLAYERS;
 		this.setChanged();
 		this.notifyObservers(is);
 	}

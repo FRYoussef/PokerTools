@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/stopLimit" android:title="@string/stop_limit"/>
+    <item android:id="@+id/numPlayers" android:title="@string/number_of_players"/>
+</menu>

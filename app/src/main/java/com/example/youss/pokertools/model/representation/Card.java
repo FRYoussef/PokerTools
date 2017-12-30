@@ -72,6 +72,12 @@ public class Card implements Comparable<Card>{
 		return lut[value];
 	}
 
+	public static char valueToCharLowerCase(int value) throws Exception {
+		if (value < 0 || value > 12)
+			throw new Exception("Card ctor.: Card value must be within [0,12]");
+		return Character.toLowerCase(lut[value]);
+	}
+
 	//inherited:
 	@Override
 	public String toString() {

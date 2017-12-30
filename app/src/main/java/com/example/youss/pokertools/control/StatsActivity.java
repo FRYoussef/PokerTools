@@ -54,23 +54,25 @@ public class StatsActivity extends AppCompatActivity {
         ArrayList<Stat> alPlays = getIntent().getParcelableArrayListExtra(RangeFragment.KEY_PLAY_STATS);
         ArrayList<Stat> alDraws = getIntent().getParcelableArrayListExtra(RangeFragment.KEY_DRAW_STATS);
 
-        getSameChart(_pcPlays, getString(R.string.title_play_chart), 1500, alPlays);
+        getSameChart(_pcPlays, 3000, alPlays);
         _pcPlays.setHoleRadius(45);
         _pcPlays.setTransparentCircleRadius(55);
         _pcPlays.setData(getPieData(alPlays));
+        _pcPlays.setCenterText(getString(R.string.title_play_chart));
+        _pcPlays.setCenterTextSize(15);
 
-        getSameChart(_pcDraws, getString(R.string.title_draw_chart), 1500, alDraws);
+        getSameChart(_pcDraws, 3000, alDraws);
         _pcDraws.setHoleRadius(45);
         _pcDraws.setTransparentCircleRadius(55);
         _pcDraws.setData(getPieData(alDraws));
+        _pcDraws.setCenterText(getString(R.string.title_draw_chart));
+        _pcDraws.setCenterTextSize(15);
     }
 
-    private Chart getSameChart(Chart chart, String description, int animationDuration, ArrayList<Stat> stats){
-        chart.getDescription().setText(description);
-        chart.getDescription().setTextSize(18);
-        chart.getDescription().setPosition(250, 50);
+    private Chart getSameChart(Chart chart, int animationDuration, ArrayList<Stat> stats){
+        chart.getDescription().setEnabled(false);
         chart.animateX(animationDuration);
-        chart.setExtraRightOffset(50);
+        chart.setExtraRightOffset(100);
         legend(chart, stats);
         return chart;
     }
@@ -83,6 +85,8 @@ public class StatsActivity extends AppCompatActivity {
         legend.setTextSize(13);
         legend.setOrientation(Legend.LegendOrientation.VERTICAL);
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        legend.setDrawInside(true);
+
         ArrayList<LegendEntry> entries = new ArrayList<>(stats.size());
         for(int i = 0; i < stats.size(); i++){
             LegendEntry entry = new LegendEntry();
