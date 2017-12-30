@@ -1,4 +1,4 @@
-package model.processor.concurrency;
+package com.example.youss.pokertools.model.processor.concurrency;
 
 public class Shared {
 	private volatile double playerStats [];

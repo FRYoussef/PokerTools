@@ -1,11 +1,10 @@
-package control.ObserverPatron;
+package com.example.youss.pokertools.model.ObserverPatron;
+
+import com.example.youss.pokertools.model.representation.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Observable;
-
-import model.representation.Card;
-import model.representation.game.Deck;
 
 public class OPlayerCards {
 	

@@ -1,4 +1,4 @@
-package model.representation.range;
+package com.example.youss.pokertools.model.representation.range;
 
 
 public enum PairType {

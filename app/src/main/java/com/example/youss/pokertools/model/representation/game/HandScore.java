@@ -1,7 +1,7 @@
-package model.representation.game;
+package com.example.youss.pokertools.model.representation.game;
 
-import model.representation.Card;
-import model.representation.Player;
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.Player;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package model.representation.game;
+package com.example.youss.pokertools.model.representation.game;
 
 public enum Play implements Comparable<Play> {
 	HighCard,

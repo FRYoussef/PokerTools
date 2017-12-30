@@ -1,9 +1,9 @@
-package model.processor;
+package com.example.youss.pokertools.model.processor;
 
-import model.representation.Card;
-import model.representation.game.Play;
-import model.representation.game.RankPerSuit;
-import model.representation.Suit;
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.Suit;
+import com.example.youss.pokertools.model.representation.game.Play;
+import com.example.youss.pokertools.model.representation.game.RankPerSuit;
 
 import java.util.ArrayList;
 

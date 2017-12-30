@@ -1,15 +1,15 @@
-package model.processor;
+package com.example.youss.pokertools.model.processor;
+
+import com.example.youss.pokertools.model.ObserverPatron.HandlerObserver;
+import com.example.youss.pokertools.model.ObserverPatron.OPlayerCards;
+import com.example.youss.pokertools.model.processor.concurrency.HEWorker;
+import com.example.youss.pokertools.model.processor.concurrency.OmahaWorker;
+import com.example.youss.pokertools.model.processor.concurrency.Shared;
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.Player;
+import com.example.youss.pokertools.model.representation.game.Deck;
 
 import java.util.*;
-
-import control.ObserverPatron.HandlerObserver;
-import control.ObserverPatron.OPlayerCards;
-import model.processor.concurrency.HEWorker;
-import model.processor.concurrency.OmahaWorker;
-import model.processor.concurrency.Shared;
-import model.representation.Card;
-import model.representation.Player;
-import model.representation.game.Deck;
 
 public class EquityProcessor{
 	private final int N_THREADS;
@@ -18,7 +18,7 @@ public class EquityProcessor{
 	public static final int GAME_OMAHA = 1;
 
 	private ArrayList<Thread> threads; 
-	private Shared sharedData; 
+	private Shared sharedData;
 
 	private Timer timer;
 	private Deck deck;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="colorsChart">
+        <item>#EF5350</item>
+        <item>#0288D1</item>
+        <item>#FFEB3B</item>
+        <item>#43A047</item>
+        <item>#AB47BC</item>
+        <item>#673AB7</item>
+        <item>#607D8B</item>
+        <item>#795548</item>
+        <item>#F4511E</item>
+        <item>#009688</item>
+    </string-array>
+
+</resources>

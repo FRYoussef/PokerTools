@@ -1,10 +1,10 @@
-package model.utils;
+package com.example.youss.pokertools.model.utils;
+
+import com.example.youss.pokertools.model.representation.Card;
+import com.example.youss.pokertools.model.representation.range.CoupleCards;
+import com.example.youss.pokertools.model.representation.range.Range;
 
 import java.util.ArrayList;
-
-import model.representation.Card;
-import model.representation.range.CoupleCards;
-import model.representation.range.Range;
 
 public class EntryParser {
 	private String [] entry; 
@@ -29,7 +29,7 @@ public class EntryParser {
 		for (int i = 0; i < this.entry.length; i++){
 			s = this.entry[i]; 
 			Range r;
-			CoupleCards atomicRank = null; 
+			CoupleCards atomicRank = null;
 			if(s.length() < 2 || s.length() > 7 || s.length() == 5)
 				return false;
 			atomicRank = this.parseCoupleCards(s);
