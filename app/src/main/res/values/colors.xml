@@ -3,6 +3,7 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#4CAF50</color>
+    <color name="disable">#46666966</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="offSuitedCell">#29B6F6</color>

@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity{
     @BindView(R.id._tlTabs) TabLayout _tlTabs;
     @BindView(R.id._vpContent) ViewPager _vpContent;
 
-    private int currentTab = RANGE;
     private MenuInflater menuInflater;
     private RangeFragment rangeFragment;
     private EquityFragment equityFragment;
@@ -45,30 +44,26 @@ public class MainActivity extends AppCompatActivity{
         rangeFragment = new RangeFragment();
         equityFragment = new EquityFragment();
         _vpContent.setAdapter(new SectionPagerAdapter(getSupportFragmentManager()));
-        _vpContent.setCurrentItem(currentTab, true);
+        _vpContent.setCurrentItem(RANGE, true);
         _tlTabs.setupWithViewPager(_vpContent);
         HandlerObserver.init();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        menuInflater.inflate(R.menu.menu_range, menu);
-        return true;
-    }
-
-    @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
-        if(currentTab == RANGE)
+
+        if(_vpContent.getCurrentItem() == RANGE)
             menuInflater.inflate(R.menu.menu_range, menu);
-        else if(currentTab == EQUITY)
+        else if(_vpContent.getCurrentItem() == EQUITY)
             menuInflater.inflate(R.menu.menu_equity, menu);
+
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(currentTab == RANGE)
+        if(_vpContent.getCurrentItem() == RANGE)
             return rangeItemMenu(item);
         else
             return equityItemMenu(item);
@@ -83,7 +78,7 @@ public class MainActivity extends AppCompatActivity{
 
                 return true;
             default:
-                return false;
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -117,7 +112,7 @@ public class MainActivity extends AppCompatActivity{
                 HandlerObserver.getoSolution().notifyGenerate();
                 return true;
             default:
-                return false;
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -130,10 +125,8 @@ public class MainActivity extends AppCompatActivity{
         public Fragment getItem(int position) {
             switch (position){
                 case RANGE:
-                    currentTab = RANGE;
                     return rangeFragment;
                 case EQUITY:
-                    currentTab = EQUITY;
                     return equityFragment;
                 default:
                     return null;

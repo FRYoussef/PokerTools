@@ -41,7 +41,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final PlayerView pl = lPlayer.get(position);
-        holder.enableView(pl.isEnabled());
+        holder.enableView(pl.isOnFold(), pl.isOnSim());
         String aux = context.getString(R.string.player)+ pl.getPlayer();
         holder._tvPlayer.setText(aux);
         aux = context.getString(R.string.equity) + ": " + DF.format(pl.getEquity()*100.f) + "%";
@@ -53,7 +53,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
         holder._btFold.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.onClickFold(pl.getPlayer()-1);
+                holder.onClickFold(pl);
             }
         });
     }
@@ -70,6 +70,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
         public TextView _tvPlayer;
         public TextView _tvEquity;
         public Button _btFold;
+        public View _vDisable;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -78,17 +79,27 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
             _tvPlayer = itemView.findViewById(R.id._tvPlayer);
             _tvEquity = itemView.findViewById(R.id._tvEquity);
             _btFold = itemView.findViewById(R.id._btFold);
+            _vDisable = itemView.findViewById(R.id._vDisable);
         }
 
-        public void onClickFold(int player){
-            enableView(false);
-            HandlerObserver.getoSolution().notifyFold(player);
+        public void onClickFold(PlayerView pl){
+            pl.setOnFold(false);
+            enableView(pl.isOnFold(), pl.isOnSim());
+            HandlerObserver.getoSolution().notifyFold(pl.getPlayer()-1);
         }
 
-        private void enableView(boolean b){
-            _btFold.setEnabled(b);
-            _ivCard1.setEnabled(b);
-            _ivCard2.setEnabled(b);
+        private void enableView(boolean onFold, boolean onSim){
+            if(!onFold){
+                _btFold.setEnabled(onFold);
+                _ivCard1.setEnabled(onFold);
+                _ivCard2.setEnabled(onFold);
+                _vDisable.setVisibility(View.VISIBLE);
+            }else {
+                _btFold.setEnabled(onSim);
+                _ivCard1.setEnabled(onSim);
+                _ivCard2.setEnabled(onSim);
+                _vDisable.setVisibility(View.GONE);
+            }
         }
     }
 }

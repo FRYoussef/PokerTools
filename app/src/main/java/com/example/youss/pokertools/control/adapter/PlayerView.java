@@ -12,7 +12,8 @@ public class PlayerView {
 
     private int player;
     private double equity;
-    private boolean enabled;
+    private boolean onFold;
+    private boolean onSim;
     private ArrayList<String> cardsSrc;
 
 
@@ -20,13 +21,15 @@ public class PlayerView {
         this.player = player;
         equity = 0.000d;
         cardsSrc = new ArrayList<>(2);
-        enabled = true;
+        onFold = true;
+        onSim = true;
     }
 
     public void reset(){
         equity = 0d;
         cardsSrc.clear();
-        enabled = true;
+        onFold = true;
+        onSim = true;
     }
 
     public String getDrawableCard1(Context context){
@@ -43,12 +46,20 @@ public class PlayerView {
         return cardsSrc.get(1);
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public boolean isOnSim() {
+        return onSim;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setOnSim(boolean onSim) {
+        this.onSim = onSim;
+    }
+
+    public boolean isOnFold() {
+        return onFold;
+    }
+
+    public void setOnFold(boolean onFold) {
+        this.onFold = onFold;
     }
 
     public void setCardSrc(int index, String cardSrc1) {

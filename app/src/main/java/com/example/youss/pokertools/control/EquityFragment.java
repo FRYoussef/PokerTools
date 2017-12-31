@@ -65,6 +65,7 @@ public class EquityFragment extends Fragment implements Observer{
     private int stopLimit = DEFAULT_STOP_LIMIT;
     private ArrayList<PlayerView> alPlayers;
     private boolean allowChangePlayers = true;
+    private long initTime;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -126,6 +127,7 @@ public class EquityFragment extends Fragment implements Observer{
                     return;
                 }
                 enableForSim(false);
+                initTime = System.currentTimeMillis();
                 equityProcessor.calculateEquity(numPlayers, EquityProcessor.GAME_NLHE);
             }
         });
@@ -203,7 +205,7 @@ public class EquityFragment extends Fragment implements Observer{
             _llBoardCards.getChildAt(i).setEnabled(b);
 
         for(PlayerView p : alPlayers)
-            p.setEnabled(b);
+            p.setOnSim(b);
         playerAdapter.notifyDataSetChanged();
     }
 
@@ -230,6 +232,12 @@ public class EquityFragment extends Fragment implements Observer{
         }
     }
 
+    private String getFormatCrono(long ms) {
+        int dec = ((int)ms / 100) % 10;
+        int sec = ((int)ms / 1000) % 60;
+        int min = (int)ms / 1000 / 60;
+        return (min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec) + ":" + dec;
+    }
 
 
     @Override
@@ -256,8 +264,9 @@ public class EquityFragment extends Fragment implements Observer{
                         equityProcessor.stopThreads();
                         enableForSim(true);
                     }
-                    String number = getString(R.string.text_simu) + ": " + String.format("%,d", o);
+                    String number = getString(R.string.text_simu) + String.format("%,d", o);
                     _tvSimu.setText(number);
+                    _tvCrono.setText(getFormatCrono(System.currentTimeMillis() - initTime));
                 }
             });
             return;

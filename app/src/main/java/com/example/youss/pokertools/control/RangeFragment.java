@@ -357,7 +357,9 @@ public class RangeFragment extends Fragment implements Observer{
     }
 
     private void updatePercentage(int num){
-        _etPercentage.setText( (int)Math.floor((num*100) / CoupleCards.NUM_COUPLE_CARDS) + "%");
+        int aux = (int)Math.floor((num*100) / CoupleCards.NUM_COUPLE_CARDS);
+        _etPercentage.setText( aux + "%");
+        _sbSlider.setProgress(aux);
     }
 
     private void onClickGenerate(){
