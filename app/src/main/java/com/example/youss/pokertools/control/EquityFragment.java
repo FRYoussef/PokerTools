@@ -1,7 +1,13 @@
 package com.example.youss.pokertools.control;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,10 +46,11 @@ public class EquityFragment extends Fragment implements Observer{
     private static final int PHASE_TURN = 2;
     private static final int PHASE_RIVER = 3;
     private static final int MAX_PLAYERS_HE = 9;
-    private static final int DEFAULT_STOP_LIMIT = 2000000;
+    private static final int DEFAULT_STOP_LIMIT = 100000;
     private static final int DEFAULT_NUM_PLAYERS = 6;
     private static final int HE_NUM_CARDS = 2;
     private String PHASES[];
+    public static final String KEY_STOP_LIMIT = "key_stop_limit";
 
 
     private Unbinder unbinder;
@@ -66,6 +74,8 @@ public class EquityFragment extends Fragment implements Observer{
     private ArrayList<PlayerView> alPlayers;
     private boolean allowChangePlayers = true;
     private long initTime;
+    private StopLimitDialog stopLimitDialog;
+    private boolean onSim = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,7 +94,7 @@ public class EquityFragment extends Fragment implements Observer{
         _rvPlayers.setLayoutManager(layoutManager);
 
         PHASES = new String[]{getString(R.string.preflop), getString(R.string.flop), getString(R.string.turn), getString(R.string.river)};
-
+        stopLimitDialog = new StopLimitDialog();
         HandlerObserver.addObserver(this);
         return v;
     }
@@ -111,15 +121,22 @@ public class EquityFragment extends Fragment implements Observer{
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if(remainPlayers == 0)
+                if(remainPlayers == 0) {
+                    Snackbar.make(_btCalculate, getString(R.string.error_no_players), Snackbar.LENGTH_SHORT).show();
                     return;
+                }
 
                 evaluatePhase();
                 if(remainPlayers == 1){
-                    //only 1 execution
-                    for(Integer i : equityProcessor.getHmPlayer().keySet())
-                        alPlayers.get(i).setEquity(1d);
+                    for(PlayerView pl : alPlayers) {
+                        if(pl.isOnFold())
+                            pl.setEquity(1d);
+                        else
+                            pl.setEquity(0d);
+                    }
+                    playerAdapter.notifyDataSetChanged();
                     _tvSimu.setText(getString(R.string.default_simu));
+                    _tvCrono.setText(getString(R.string.default_crono));
                     return;
                 }
                 if(phase == PHASE_RIVER){
@@ -175,9 +192,9 @@ public class EquityFragment extends Fragment implements Observer{
                 _tvSimu.setText(getString(R.string.default_simu));
                 _tvCrono.setText(getString(R.string.default_crono));
                 phase = 0;
+                remainPlayers = numPlayers;
                 _tvPhase.setText(PHASES[phase]);
-                for(PlayerView p : alPlayers)
-                    p.reset();
+
                 for(int i = 0; i < _llBoardCards.getChildCount(); i++) {
                     ((ImageView) _llBoardCards.getChildAt(i)).setImageResource(getResources()
                             .getIdentifier(getString(R.string.back_card_resource),
@@ -185,8 +202,10 @@ public class EquityFragment extends Fragment implements Observer{
                 }
                 equityProcessor.removeAllPlayers();
                 try{
-                    for(PlayerView p : alPlayers)
-                        equityProcessor.addPlayer(new Player(p.getPlayer()-1, HE_NUM_CARDS));
+                    for(PlayerView p : alPlayers) {
+                        p.reset();
+                        equityProcessor.addPlayer(new Player(p.getPlayer() - 1, HE_NUM_CARDS));
+                    }
                 }catch (Exception e){
                     e.printStackTrace();
                     Log.e("Removing a player", e.getMessage());
@@ -198,6 +217,7 @@ public class EquityFragment extends Fragment implements Observer{
     }
 
     private void enableForSim(boolean b){
+        onSim = !b;
         _btCalculate.setEnabled(b);
         _btNextPhase.setEnabled(b);
         _btStop.setEnabled(!b);
@@ -264,9 +284,10 @@ public class EquityFragment extends Fragment implements Observer{
                         equityProcessor.stopThreads();
                         enableForSim(true);
                     }
-                    String number = getString(R.string.text_simu) + String.format("%,d", o);
+                    String number = getString(R.string.text_simu) + " " + String.format("%,d", o);
                     _tvSimu.setText(number);
-                    _tvCrono.setText(getFormatCrono(System.currentTimeMillis() - initTime));
+                    long time = System.currentTimeMillis() - initTime;
+                    _tvCrono.setText(time <= 0 ? getString(R.string.default_crono) : getFormatCrono(time));
                 }
             });
             return;
@@ -303,6 +324,73 @@ public class EquityFragment extends Fragment implements Observer{
                 e.printStackTrace();
                 Log.e("Error, fold player", e.getMessage());
             }
+        }
+        else if(sol.getState() == OSolution.NOTIFY_EQUITY_STOP_LIMIT){
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(onSim){
+                        Snackbar.make(_btCalculate, getString(R.string.error_onsim), Snackbar.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if(o == null) {
+                        Bundle b = new Bundle();
+                        b.putInt(KEY_STOP_LIMIT, stopLimit);
+                        stopLimitDialog.setArguments(b);
+                        stopLimitDialog.show(getFragmentManager(), "stopLimit dialog");
+                        return;
+                    }
+
+                    stopLimit = (Integer) o;
+                }
+            });
+        }
+        else if(sol.getState() == OSolution.NOTIFY_EQUITY_EQUITY_NUM_PLAYERS){
+            if(o == null)
+                return;
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(phase != PHASE_PREFLOP){
+                        Snackbar.make(_btCalculate, getString(R.string.error_not_onpreflop), Snackbar.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(onSim){
+                        Snackbar.make(_btCalculate, getString(R.string.error_onsim), Snackbar.LENGTH_SHORT).show();
+                        return;
+                    }
+                    int val = (Integer)o;
+                    if(val == numPlayers)
+                        return;
+                    if(val > numPlayers){
+                        for (int i = numPlayers; i < val; i++) {
+                            alPlayers.add(new PlayerView(i+1));
+                            playerAdapter.notifyItemInserted(i);
+                            try {
+                                equityProcessor.addPlayer(new Player(i, val));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    else{
+                        for (int i = numPlayers-1; i > val-1; i--) {
+                            alPlayers.remove(i);
+                            playerAdapter.notifyItemRemoved(i);
+                            try {
+                                equityProcessor.removePlayer(i);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    numPlayers = val;
+                    remainPlayers = val;
+                }
+            });
+
         }
     }
 
@@ -357,5 +445,51 @@ public class EquityFragment extends Fragment implements Observer{
         super.onDestroyView();
         HandlerObserver.removeObserver(this);
         unbinder.unbind();
+    }
+
+    public static class StopLimitDialog extends DialogFragment {
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+            builder.setView(inflater.inflate(R.layout.alertdialog_stop_limit, null))
+                    .setTitle(R.string.stop_limit)
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {}
+                    }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {}
+                    });
+
+            return builder.create();
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            final AlertDialog d = (AlertDialog)getDialog();
+            if(d != null)
+            {
+                final EditText et = d.findViewById(R.id._etStopLimit);
+                et.setText(getArguments().getInt(KEY_STOP_LIMIT)+"");
+                Button positiveButton = d.getButton(Dialog.BUTTON_POSITIVE);
+                positiveButton.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v) {
+                        try{
+                            int val = Integer.parseInt(et.getText().toString());
+                            HandlerObserver.getoSolution().notifyStopLimit(val);
+                            d.dismiss();
+                        }catch (Exception e){
+                            et.setTextColor(getActivity().getResources().getColor(R.color.errorColor));
+                        }
+                    }
+                });
+            }
+        }
     }
 }

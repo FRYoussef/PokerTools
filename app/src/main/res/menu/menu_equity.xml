@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/stopLimit" android:title="@string/stop_limit"/>
-    <item android:id="@+id/numPlayers" android:title="@string/number_of_players"/>
+    <item android:id="@+id/numPlayers" android:title="@string/number_of_players">
+        <menu>
+            <item android:id="@+id/p1" android:title="@string/_1"/>
+            <item android:id="@+id/p2" android:title="@string/_2"/>
+            <item android:id="@+id/p3" android:title="@string/_3"/>
+            <item android:id="@+id/p4" android:title="@string/_4"/>
+            <item android:id="@+id/p5" android:title="@string/_5"/>
+            <item android:id="@+id/p6" android:title="@string/_6"/>
+        </menu>
+    </item>
 </menu>

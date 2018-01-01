@@ -72,10 +72,25 @@ public class MainActivity extends AppCompatActivity{
     private boolean equityItemMenu(MenuItem item) {
         switch (item.getItemId()){
             case R.id.stopLimit:
-
+                HandlerObserver.getoSolution().notifyStopLimit(null);
                 return true;
-            case R.id.numPlayers:
-
+            case R.id.p1:
+                HandlerObserver.getoSolution().notifyNumPlayers(1);
+                return true;
+            case R.id.p2:
+                HandlerObserver.getoSolution().notifyNumPlayers(2);
+                return true;
+            case R.id.p3:
+                HandlerObserver.getoSolution().notifyNumPlayers(3);
+                return true;
+            case R.id.p4:
+                HandlerObserver.getoSolution().notifyNumPlayers(4);
+                return true;
+            case R.id.p5:
+                HandlerObserver.getoSolution().notifyNumPlayers(5);
+                return true;
+            case R.id.p6:
+                HandlerObserver.getoSolution().notifyNumPlayers(6);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

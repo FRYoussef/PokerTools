@@ -1,6 +1,5 @@
 package com.example.youss.pokertools.control;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -21,7 +20,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -437,14 +435,14 @@ public class RangeFragment extends Fragment implements Observer{
                 {
                     @Override
                     public void onClick(View v) {
-                        TextView tv = d.findViewById(R.id._etPersonalRange);
-                        String entry = tv.getText().toString();
+                        EditText et = d.findViewById(R.id._etPersonalRange);
+                        String entry = et.getText().toString();
                         if(entry.isEmpty())
                             return;
 
                         EntryParser entryParser = new EntryParser(entry);
                         if(!entryParser.parseEntry()){
-                            tv.setTextColor(getResources().getColor(R.color.errorColor));
+                            et.setTextColor(getResources().getColor(R.color.errorColor));
                             return;
                         }
                         HandlerObserver.getoSolution().notifyPersonalRangeReponse(entryParser);
