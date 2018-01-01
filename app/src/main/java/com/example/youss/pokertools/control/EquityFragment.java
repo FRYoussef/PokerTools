@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,8 +31,11 @@ import com.example.youss.pokertools.model.ObserverPatron.OSolution;
 import com.example.youss.pokertools.model.processor.EquityProcessor;
 import com.example.youss.pokertools.model.representation.Card;
 import com.example.youss.pokertools.model.representation.Player;
+import com.example.youss.pokertools.model.representation.game.Deck;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -51,6 +56,10 @@ public class EquityFragment extends Fragment implements Observer{
     private static final int HE_NUM_CARDS = 2;
     private String PHASES[];
     public static final String KEY_STOP_LIMIT = "key_stop_limit";
+    public static final String KEY_NUM_PLAYER = "key_num_player";
+    public static final String KEY_NUM_CARDS = "key_num_cards";
+    public static final String KEY_DECK = "key_deck";
+    public static final String KEY_PLAYER_CARDS = "key_player_cards";
 
 
     private Unbinder unbinder;
@@ -75,6 +84,7 @@ public class EquityFragment extends Fragment implements Observer{
     private boolean allowChangePlayers = true;
     private long initTime;
     private StopLimitDialog stopLimitDialog;
+    private SelectCardDialog selectCardDialog;
     private boolean onSim = false;
 
     @Override
@@ -95,8 +105,40 @@ public class EquityFragment extends Fragment implements Observer{
 
         PHASES = new String[]{getString(R.string.preflop), getString(R.string.flop), getString(R.string.turn), getString(R.string.river)};
         stopLimitDialog = new StopLimitDialog();
+        selectCardDialog = new SelectCardDialog();
+        onClickBoardCard();
         HandlerObserver.addObserver(this);
         return v;
+    }
+
+    private void onClickBoardCard() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i = 0; i < _llBoardCards.getChildCount(); i++){
+                    TextView tv = (TextView) _llBoardCards.getChildAt(i);
+                    tv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(phase == PHASE_PREFLOP) return;
+
+                            Bundle b = new Bundle();
+                            b.putParcelableArrayList(KEY_PLAYER_CARDS, equityProcessor.getBoardCards());
+                            b.putParcelable(KEY_DECK, equityProcessor.getDeck());
+                            b.putInt(KEY_NUM_PLAYER, -1);
+
+                            int nCards = 3;
+                            if(phase == PHASE_TURN) nCards = 4;
+                            else if(phase == PHASE_RIVER) nCards = 5;
+
+                            b.putInt(KEY_NUM_CARDS, nCards);
+                            selectCardDialog.setArguments(b);
+                            selectCardDialog.show(getFragmentManager(), "cards selector");
+                        }
+                    });
+                }
+            }
+        });
     }
 
     /**
@@ -298,13 +340,12 @@ public class EquityFragment extends Fragment implements Observer{
                 public void run() {
                     try {
                         OPlayerCards pc = (OPlayerCards)o;
-                        if(pc.getNumPlayer() != -1)
-                        {
+                        equityProcessor.removeCardsDeck(pc.getOuts());
+                        equityProcessor.replaceCardsDeck(pc.getIns());
+                        if (pc.getNumPlayer() != -1) {
                             addPlayerscards(pc.getCards(), pc.getNumPlayer());
                             equityProcessor.addPlayerCards(pc.getNumPlayer(), pc.getCards().toArray(new Card[pc.getCards().size()]));
-                        }
-                        else
-                        {
+                        } else {
                             equityProcessor.addBoardCards(pc.getCards());
                             addBoardCards(equityProcessor.getBoardCards());
                         }
@@ -490,6 +531,150 @@ public class EquityFragment extends Fragment implements Observer{
                     }
                 });
             }
+        }
+    }
+
+    public static class SelectCardDialog extends DialogFragment {
+        private GridLayout _glDeckCards;
+        private Deck deck;
+        private int numCards;
+        private int numPlayer;
+        private HashSet<Card> hsIn;
+        private HashSet<Card> hsOut;
+        private HashSet<Card> hsSelect;
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            hsSelect = new HashSet<>(5);
+            hsIn = new HashSet<>();
+            hsOut = new HashSet<>();
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+            builder.setView(inflater.inflate(R.layout.alertdialog_select_cards, null))
+                    .setTitle(R.string.title_select_cards)
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {}
+                    }).setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {}
+            });
+
+            return builder.create();
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            final AlertDialog d = (AlertDialog)getDialog();
+            if(d != null)
+            {
+                _glDeckCards = d.findViewById(R.id._glDeckCards);
+                deck = getArguments().getParcelable(KEY_DECK);
+                numCards = getArguments().getInt(KEY_NUM_CARDS);
+                numPlayer = getArguments().getInt(KEY_NUM_PLAYER);
+                hsSelect.clear();
+                hsIn.clear();
+                hsOut.clear();
+
+                outCards();
+                selectPlayerCards();
+
+                for (int i = 0; i < _glDeckCards.getChildCount(); i++) {
+                    TextView tv = (TextView) _glDeckCards.getChildAt(i);
+                    tv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            onClickCardDeck((TextView)view);
+                        }
+                    });
+                }
+
+                Button positiveButton = d.getButton(Dialog.BUTTON_POSITIVE);
+                positiveButton.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v) {
+                    onClickAccept();
+                    }
+                });
+
+            }
+        }
+
+        private void onClickCardDeck(TextView view){
+            try {
+                Card c = Card.parseString(view.getText().toString());
+                if(hsSelect.contains(c))
+                {
+                    hsSelect.remove(c);
+                    if(hsOut.contains(c)) hsOut.remove(c);
+                    hsIn.add(c);
+                    view.setEnabled(true);
+                    view.setBackgroundColor(getActivity().getResources().getColor(R.color.white));
+                }
+                else if(hsSelect.size() < numCards)
+                {
+                    hsSelect.add(c);
+                    if(hsIn.contains(c)) hsIn.remove(c);
+                    hsOut.add(c);
+                    view.setEnabled(true);
+                    view.setBackgroundColor(getActivity().getResources().getColor(R.color.selected));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        private void onClickAccept(){
+            if(numCards != hsSelect.size())
+                return;
+            ArrayList<Card> cs = new ArrayList<>(Arrays.asList((Card[])hsSelect.toArray()));
+            HandlerObserver.getoSolution().notifyPlayerCards(new OPlayerCards(cs, numPlayer,
+                    (Card[]) hsOut.toArray(), (Card[]) hsIn.toArray()));
+            dismiss();
+        }
+
+        private void outCards(){
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        for (int i = 0; i < _glDeckCards.getChildCount(); i++) {
+                            TextView tv = (TextView) _glDeckCards.getChildAt(i);
+                            if (deck.contains(Card.parseString(tv.getText().toString()))){
+                                tv.setBackgroundColor(getActivity().getResources().getColor(R.color.white));
+                                tv.setEnabled(true);
+                            }
+                            else{
+                                tv.setBackgroundColor(getActivity().getResources().getColor(R.color.disable));
+                                tv.setEnabled(false);
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+
+        private void selectPlayerCards(){
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ArrayList<Card> alCd = getArguments().getParcelableArrayList(KEY_PLAYER_CARDS);
+                    if(alCd != null){
+                        for(Card c : alCd){
+                            TextView tv = (TextView) _glDeckCards.getChildAt(c.getSuit().ordinal()*Card.NUM_CARDS+c.getValue());
+                            tv.setEnabled(true);
+                            tv.setBackgroundColor(getActivity().getResources().getColor(R.color.selected));
+                            hsSelect.add(c);
+                            hsOut.add(c);
+                        }
+                    }
+                }
+            });
         }
     }
 }

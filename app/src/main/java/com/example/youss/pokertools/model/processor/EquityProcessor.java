@@ -130,6 +130,30 @@ public class EquityProcessor{
 		return count == num;
 	}
 
+	/**
+	 * It replaces an array of cards in to the deck
+	 * @param in
+	 */
+	public void replaceCardsDeck(Card[] in){
+		if(in == null)
+			return;
+
+		for(Card c : in)
+			deck.replaceCard(c);
+	}
+
+	/**
+	 * It removes an array of cards from the deck
+	 * @param out
+	 */
+	public void removeCardsDeck(Card[] out){
+		if(out == null)
+			return;
+
+		for(Card c : out)
+			deck.removeCard(c);
+	}
+
     /**
      * It add cards to players who dont have cards, and notify it
      */
