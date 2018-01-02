@@ -1,10 +1,10 @@
 package com.example.youss.pokertools.model.representation;
 
-public enum Suit {
-	Spades,
+public enum Suit{
 	Hearts,
 	Clubs,
 	Diamonds,
+	Spades,
 	None;
 
 	public static final int NUM_SUIT = 4;

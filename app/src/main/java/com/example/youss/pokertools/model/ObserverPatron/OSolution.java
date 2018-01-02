@@ -21,6 +21,7 @@ public class OSolution extends Observable{
 	public static final int NOTIFY_RANGE_GENERATE = 13;
 	public static final int NOTIFY_EQUITY_STOP_LIMIT = 14;
 	public static final int NOTIFY_EQUITY_EQUITY_NUM_PLAYERS = 15;
+	public static final int NOTIFY_EQUITY_SELECTION_PLAYER_CARDS = 16;
 
 	private int state = -1;
 
@@ -118,6 +119,12 @@ public class OSolution extends Observable{
 		state = NOTIFY_EQUITY_EQUITY_NUM_PLAYERS;
 		setChanged();
 		notifyObservers(val);
+	}
+
+	public void notifySelectionPlayerCards(int player){
+		state = NOTIFY_EQUITY_SELECTION_PLAYER_CARDS;
+		setChanged();
+		notifyObservers(player);
 	}
 
 	public int getState() {

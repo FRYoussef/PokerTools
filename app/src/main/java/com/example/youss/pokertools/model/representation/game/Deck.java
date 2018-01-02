@@ -1,12 +1,16 @@
 package com.example.youss.pokertools.model.representation.game;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.youss.pokertools.model.representation.Card;
 import com.example.youss.pokertools.model.representation.Suit;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 
-public class Deck {
+public class Deck implements Parcelable{
 	private HashSet<Card> cards;
 	private Random random;
 	
@@ -19,6 +23,11 @@ public class Deck {
 		init();
 		if (fill)
 			fill();
+	}
+
+	public Deck(Parcel in){
+		readFromParcel(in);
+		random = new Random(System.currentTimeMillis());
 	}
 	
 	private void init () {
@@ -88,4 +97,30 @@ public class Deck {
 	public boolean takeOutCard(Card c){
 		return this.cards.remove(c);
 	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeParcelableArray((Card[])cards.toArray(), 1);
+	}
+
+	private void readFromParcel(Parcel in) {
+		cards = new HashSet<>(Arrays.asList((Card[])in.readParcelableArray(getClass().getClassLoader())));
+	}
+
+	public static final Creator<Deck> CREATOR = new Creator<Deck>() {
+		@Override
+		public Deck createFromParcel(Parcel in) {
+			return new Deck(in);
+		}
+
+		@Override
+		public Deck[] newArray(int size) {
+			return new Deck[size];
+		}
+	};
 }

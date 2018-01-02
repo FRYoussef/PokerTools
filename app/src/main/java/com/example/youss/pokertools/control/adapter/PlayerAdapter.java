@@ -56,6 +56,18 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
                 holder.onClickFold(pl);
             }
         });
+        holder._ivCard1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.onClickImg(pl.getPlayer()-1);
+            }
+        });
+        holder._ivCard2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.onClickImg(pl.getPlayer()-1);
+            }
+        });
     }
 
     @Override
@@ -86,6 +98,10 @@ public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.ViewHolder
             pl.setOnFold(false);
             enableView(pl.isOnFold(), pl.isOnSim());
             HandlerObserver.getoSolution().notifyFold(pl.getPlayer()-1);
+        }
+
+        public void onClickImg(int player){
+            HandlerObserver.getoSolution().notifySelectionPlayerCards(player);
         }
 
         private void enableView(boolean onFold, boolean onSim){
