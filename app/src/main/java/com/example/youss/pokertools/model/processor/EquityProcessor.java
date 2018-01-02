@@ -37,6 +37,12 @@ public class EquityProcessor{
 		return hmPlayer;
 	}
 
+	public ArrayList<Card> getCardsPlayer(int player) throws Exception {
+		if(!hmPlayer.containsKey(player))
+			throw new Exception("The player " + player + " is not allocated");
+		return hmPlayer.get(player).getCards() == null ? null : new ArrayList<>(Arrays.asList(hmPlayer.get(player).getCards()));
+	}
+
 	/**
 	 * It adds a player no nullable
 	 * @param player
@@ -128,6 +134,30 @@ public class EquityProcessor{
 			if(hmPlayer.get(i).getCards() != null)
 				count++;
 		return count == num;
+	}
+
+	/**
+	 * It replaces an array of cards in to the deck
+	 * @param in
+	 */
+	public void replaceCardsDeck(Card[] in){
+		if(in == null)
+			return;
+
+		for(Card c : in)
+			deck.replaceCard(c);
+	}
+
+	/**
+	 * It removes an array of cards from the deck
+	 * @param out
+	 */
+	public void removeCardsDeck(Card[] out){
+		if(out == null)
+			return;
+
+		for(Card c : out)
+			deck.removeCard(c);
 	}
 
     /**

@@ -6,7 +6,7 @@ import java.util.Observable;
 
 public class OSolution extends Observable{
 	public static final int NOTIFY_EQUITY_PLAYER_CARDS = 0;
-	public static final int NOTIFY_EQUITY = 1;
+	public static final int NOTIFY_EQUITY_EQUITY_PLAYERS = 1;
 	public static final int NOTIFY_EQUITY_SIM = 2;
 	public static final int NOTIFY_EQUITY_FOLD = 3;
 	public static final int NOTIFY_PLAYER_CARDS_STRING = 4;
@@ -19,6 +19,9 @@ public class OSolution extends Observable{
 	public static final int NOTIFY_RANGE_PERSONAL_RANGE_REQUEST = 11;
 	public static final int NOTIFY_RANGE_PERSONAL_RANGE_REPONSE = 12;
 	public static final int NOTIFY_RANGE_GENERATE = 13;
+	public static final int NOTIFY_EQUITY_STOP_LIMIT = 14;
+	public static final int NOTIFY_EQUITY_EQUITY_NUM_PLAYERS = 15;
+	public static final int NOTIFY_EQUITY_SELECTION_PLAYER_CARDS = 16;
 
 	private int state = -1;
 
@@ -29,7 +32,7 @@ public class OSolution extends Observable{
     }
 
 	public void notifyEquity(double[] is){
-		state = NOTIFY_EQUITY;
+		state = NOTIFY_EQUITY_EQUITY_PLAYERS;
 		this.setChanged();
 		this.notifyObservers(is);
 	}
@@ -104,6 +107,24 @@ public class OSolution extends Observable{
 		state = NOTIFY_RANGE_GENERATE;
 		setChanged();
 		notifyObservers();
+	}
+
+	public void notifyStopLimit(Integer val){
+		state = NOTIFY_EQUITY_STOP_LIMIT;
+		setChanged();
+		notifyObservers(val);
+	}
+
+	public void notifyNumPlayers(Integer val){
+		state = NOTIFY_EQUITY_EQUITY_NUM_PLAYERS;
+		setChanged();
+		notifyObservers(val);
+	}
+
+	public void notifySelectionPlayerCards(int player){
+		state = NOTIFY_EQUITY_SELECTION_PLAYER_CARDS;
+		setChanged();
+		notifyObservers(player);
 	}
 
 	public int getState() {

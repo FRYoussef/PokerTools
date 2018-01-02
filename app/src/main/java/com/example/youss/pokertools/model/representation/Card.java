@@ -1,6 +1,9 @@
 package com.example.youss.pokertools.model.representation;
 
-public class Card implements Comparable<Card>{
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Card implements Comparable<Card>, Parcelable{
 
 //public:
 	//fields:
@@ -24,8 +27,24 @@ public class Card implements Comparable<Card>{
 		this.value = (byte)value;
 		this.suit = suit;
 	}
-	
-	
+
+	public Card (Parcel in){
+		readFromParcel(in);
+	}
+
+
+	public static final Creator<Card> CREATOR = new Creator<Card>() {
+		@Override
+		public Card createFromParcel(Parcel in) {
+			return new Card(in);
+		}
+
+		@Override
+		public Card[] newArray(int size) {
+			return new Card[size];
+		}
+	};
+
 	//getters&setters:
 	public byte getValue() {
 		return value;
@@ -72,6 +91,20 @@ public class Card implements Comparable<Card>{
 		return lut[value];
 	}
 
+	public static char valueToCharLowerCase(int value) throws Exception {
+		if (value < 0 || value > 12)
+			throw new Exception("Card ctor.: Card value must be within [0,12]");
+		return Character.toLowerCase(lut[value]);
+	}
+
+	public static Card parseString(String str) throws Exception {
+		if(str == null)
+			throw new Exception("Cant parse a null string");
+		if(str.equals("") || str.length() != 2)
+			throw new Exception("Cant parse this string: " + str);
+		return new Card(charToValue(str.charAt(0)), Suit.getFromChar(str.charAt(1)));
+	}
+
 	//inherited:
 	@Override
 	public String toString() {
@@ -98,7 +131,22 @@ public class Card implements Comparable<Card>{
 	//fields:
 	private byte value;
 	private Suit suit;
-	private static char _CONVERSION = '2';  
-	
-		
+	private static char _CONVERSION = '2';
+
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeByte(value);
+		parcel.writeInt(suit.ordinal());
+	}
+
+	private void readFromParcel(Parcel in) {
+		value = in.readByte();
+		suit = Suit.getFromInt(in.readInt());
+	}
 }

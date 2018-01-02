@@ -1,12 +1,12 @@
 package com.example.youss.pokertools.control;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -20,7 +20,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -127,23 +126,19 @@ public class RangeFragment extends Fragment implements Observer{
     private void onClickBoardCard(TextView view){
 
         char suit = view.getText().charAt(1);
-        int selected = 0;
+        int selected = getResources().getColor(R.color.selected);
         int nonSelected = 0;
         switch (suit){
             case 'h':
-                selected = getResources().getColor(R.color.heartsSelected);
                 nonSelected = getResources().getColor(R.color.hearts);
                 break;
             case 'c':
-                selected = getResources().getColor(R.color.clubsSelected);
                 nonSelected = getResources().getColor(R.color.clubs);
                 break;
             case 'd':
-                selected = getResources().getColor(R.color.diamondsSelected);
                 nonSelected = getResources().getColor(R.color.diamonds);
                 break;
             case 's':
-                selected = getResources().getColor(R.color.spadesSelected);
                 nonSelected = getResources().getColor(R.color.spades);
                 break;
         }
@@ -185,8 +180,14 @@ public class RangeFragment extends Fragment implements Observer{
 
     @OnClick(R.id._btStats)
     public void onClickStats() {
-        if(numBoardCards < 3 || hsCouples.size() == 0)
+        if(hsCouples.size() == 0){
+            Snackbar.make(_btStats, getString(R.string.error_no_range_selected), Snackbar.LENGTH_SHORT).show();
             return;
+        }
+        if(numBoardCards < 3) {
+            Snackbar.make(_btStats, R.string.error_noboards_cards, Snackbar.LENGTH_SHORT).show();
+            return;
+        }
 
         try{
             HashSet<Card> hsC = new HashSet<>(hsBoardCards.size());
@@ -354,7 +355,9 @@ public class RangeFragment extends Fragment implements Observer{
     }
 
     private void updatePercentage(int num){
-        _etPercentage.setText( (int)Math.floor((num*100) / CoupleCards.NUM_COUPLE_CARDS) + "%");
+        int aux = (int)Math.floor((num*100) / CoupleCards.NUM_COUPLE_CARDS);
+        _etPercentage.setText( aux + "%");
+        _sbSlider.setProgress(aux);
     }
 
     private void onClickGenerate(){
@@ -432,14 +435,14 @@ public class RangeFragment extends Fragment implements Observer{
                 {
                     @Override
                     public void onClick(View v) {
-                        TextView tv = d.findViewById(R.id._etPersonalRange);
-                        String entry = tv.getText().toString();
+                        EditText et = d.findViewById(R.id._etPersonalRange);
+                        String entry = et.getText().toString();
                         if(entry.isEmpty())
                             return;
 
                         EntryParser entryParser = new EntryParser(entry);
                         if(!entryParser.parseEntry()){
-                            tv.setTextColor(getResources().getColor(R.color.errorColor));
+                            et.setTextColor(getResources().getColor(R.color.errorColor));
                             return;
                         }
                         HandlerObserver.getoSolution().notifyPersonalRangeReponse(entryParser);
