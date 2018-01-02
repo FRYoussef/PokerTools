@@ -116,11 +116,18 @@ public class EquityFragment extends Fragment implements Observer{
             @Override
             public void run() {
                 for(int i = 0; i < _llBoardCards.getChildCount(); i++){
-                    TextView tv = (TextView) _llBoardCards.getChildAt(i);
-                    tv.setOnClickListener(new View.OnClickListener() {
+                    ImageView iv = (ImageView) _llBoardCards.getChildAt(i);
+                    iv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if(phase == PHASE_PREFLOP) return;
+                            if(onSim){
+                                Snackbar.make(_btCalculate, getString(R.string.error_onsim), Snackbar.LENGTH_SHORT).show();
+                                return;
+                            }
+                            if(phase == PHASE_PREFLOP){
+                                Snackbar.make(_btCalculate, R.string.error_board_cards_preflop, Snackbar.LENGTH_SHORT).show();
+                                return;
+                            }
 
                             Bundle b = new Bundle();
                             b.putParcelableArrayList(KEY_PLAYER_CARDS, equityProcessor.getBoardCards());
@@ -393,12 +400,12 @@ public class EquityFragment extends Fragment implements Observer{
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    if(phase != PHASE_PREFLOP){
-                        Snackbar.make(_btCalculate, getString(R.string.error_not_onpreflop), Snackbar.LENGTH_SHORT).show();
-                        return;
-                    }
                     if(onSim){
                         Snackbar.make(_btCalculate, getString(R.string.error_onsim), Snackbar.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(phase != PHASE_PREFLOP){
+                        Snackbar.make(_btCalculate, getString(R.string.error_not_onpreflop), Snackbar.LENGTH_SHORT).show();
                         return;
                     }
                     int val = (Integer)o;
@@ -431,7 +438,29 @@ public class EquityFragment extends Fragment implements Observer{
                     remainPlayers = val;
                 }
             });
-
+            return;
+        }
+        else if(sol.getState() == OSolution.NOTIFY_EQUITY_SELECTION_PLAYER_CARDS){
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(onSim){
+                        Snackbar.make(_btCalculate, getString(R.string.error_onsim), Snackbar.LENGTH_SHORT).show();
+                        return;
+                    }
+                    try{
+                        Bundle b = new Bundle();
+                        b.putParcelableArrayList(KEY_PLAYER_CARDS, equityProcessor.getCardsPlayer((Integer)o));
+                        b.putParcelable(KEY_DECK, equityProcessor.getDeck());
+                        b.putInt(KEY_NUM_PLAYER, (Integer)o);
+                        b.putInt(KEY_NUM_CARDS, HE_NUM_CARDS);
+                        selectCardDialog.setArguments(b);
+                        selectCardDialog.show(getFragmentManager(), "cards selector");
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 
@@ -536,6 +565,7 @@ public class EquityFragment extends Fragment implements Observer{
 
     public static class SelectCardDialog extends DialogFragment {
         private GridLayout _glDeckCards;
+        private TextView _tvTitleSelection;
         private Deck deck;
         private int numCards;
         private int numPlayer;
@@ -552,7 +582,6 @@ public class EquityFragment extends Fragment implements Observer{
             hsOut = new HashSet<>();
             LayoutInflater inflater = getActivity().getLayoutInflater();
             builder.setView(inflater.inflate(R.layout.alertdialog_select_cards, null))
-                    .setTitle(R.string.title_select_cards)
                     .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {}
@@ -571,12 +600,16 @@ public class EquityFragment extends Fragment implements Observer{
             if(d != null)
             {
                 _glDeckCards = d.findViewById(R.id._glDeckCards);
+                _tvTitleSelection = d.findViewById(R.id._tvTitleSelection);
                 deck = getArguments().getParcelable(KEY_DECK);
                 numCards = getArguments().getInt(KEY_NUM_CARDS);
                 numPlayer = getArguments().getInt(KEY_NUM_PLAYER);
                 hsSelect.clear();
                 hsIn.clear();
                 hsOut.clear();
+
+                if(numPlayer == -1) _tvTitleSelection.setText(getString(R.string.board_cards));
+                else _tvTitleSelection.setText(getString(R.string.cards_of_player) + (numPlayer+1));
 
                 outCards();
                 selectPlayerCards();
@@ -630,9 +663,10 @@ public class EquityFragment extends Fragment implements Observer{
         private void onClickAccept(){
             if(numCards != hsSelect.size())
                 return;
-            ArrayList<Card> cs = new ArrayList<>(Arrays.asList((Card[])hsSelect.toArray()));
+            ArrayList<Card> cs = new ArrayList<>(hsSelect.size());
+            cs.addAll(hsSelect);
             HandlerObserver.getoSolution().notifyPlayerCards(new OPlayerCards(cs, numPlayer,
-                    (Card[]) hsOut.toArray(), (Card[]) hsIn.toArray()));
+                    hsOut.toArray(new Card[hsOut.size()]), hsIn.toArray(new Card[hsIn.size()])));
             dismiss();
         }
 
@@ -648,7 +682,7 @@ public class EquityFragment extends Fragment implements Observer{
                                 tv.setEnabled(true);
                             }
                             else{
-                                tv.setBackgroundColor(getActivity().getResources().getColor(R.color.disable));
+                                tv.setBackgroundColor(getActivity().getResources().getColor(R.color.disableCard));
                                 tv.setEnabled(false);
                             }
                         }

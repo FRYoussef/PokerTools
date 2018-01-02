@@ -37,6 +37,12 @@ public class EquityProcessor{
 		return hmPlayer;
 	}
 
+	public ArrayList<Card> getCardsPlayer(int player) throws Exception {
+		if(!hmPlayer.containsKey(player))
+			throw new Exception("The player " + player + " is not allocated");
+		return hmPlayer.get(player).getCards() == null ? null : new ArrayList<>(Arrays.asList(hmPlayer.get(player).getCards()));
+	}
+
 	/**
 	 * It adds a player no nullable
 	 * @param player

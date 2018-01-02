@@ -56,4 +56,6 @@
     <string name="error_onsim">It is not allowed during a simulation</string>
     <string name="error_no_players">There is not players for a simulation</string>
     <string name="title_select_cards">Select the Cards</string>
+    <string name="error_board_cards_preflop">You can´t choose board cards on preflop</string>
+    <string name="cards_of_player">Cards of Player</string>
 </resources>

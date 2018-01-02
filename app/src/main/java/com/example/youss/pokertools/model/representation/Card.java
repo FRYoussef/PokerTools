@@ -102,8 +102,7 @@ public class Card implements Comparable<Card>, Parcelable{
 			throw new Exception("Cant parse a null string");
 		if(str.equals("") || str.length() != 2)
 			throw new Exception("Cant parse this string: " + str);
-
-		return new Card(valueToChar(str.charAt(0)), Suit.getFromChar(str.charAt(1)));
+		return new Card(charToValue(str.charAt(0)), Suit.getFromChar(str.charAt(1)));
 	}
 
 	//inherited:
