@@ -236,7 +236,7 @@ public class EquityFragment extends Fragment implements Observer{
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                equityProcessor.stopThreads();
+                equityProcessor.clear();
                 enableForSim(true);
                 _tvSimu.setText(getString(R.string.default_simu));
                 _tvCrono.setText(getString(R.string.default_crono));
@@ -249,7 +249,6 @@ public class EquityFragment extends Fragment implements Observer{
                             .getIdentifier(getString(R.string.back_card_resource),
                                     "drawable", getActivity().getPackageName()));
                 }
-                equityProcessor.removeAllPlayers();
                 try{
                     for(PlayerView p : alPlayers) {
                         p.reset();
@@ -259,7 +258,6 @@ public class EquityFragment extends Fragment implements Observer{
                     e.printStackTrace();
                     Log.e("Removing a player", e.getMessage());
                 }
-                equityProcessor.clearBoard();
                 allowChangePlayers = true;
             }
         });
@@ -427,7 +425,7 @@ public class EquityFragment extends Fragment implements Observer{
                             alPlayers.remove(i);
                             playerAdapter.notifyItemRemoved(i);
                             try {
-                                equityProcessor.removePlayer(i);
+                                equityProcessor.removePlayer(i, true);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

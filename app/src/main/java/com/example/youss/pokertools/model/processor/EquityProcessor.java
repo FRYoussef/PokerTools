@@ -66,6 +66,14 @@ public class EquityProcessor{
 		hmPlayer.remove(player);
 	}
 
+	public void removePlayer(int player, boolean replaceCards) throws Exception {
+		if(!hmPlayer.containsKey(player))
+			throw new Exception("This player " + player + " does not exist, you cant remove it");
+
+		if(replaceCards) replaceCardsDeck(hmPlayer.get(player).getCards());
+		hmPlayer.remove(player);
+	}
+
 	/**
 	 * It restores the player cards to the deck, and clear the players
 	 */
@@ -117,10 +125,11 @@ public class EquityProcessor{
 		boardCards = (ArrayList<Card>) cards.clone();
 	}
 
-	public void clearBoard(){
-		for(Card c : boardCards)
-			deck.replaceCard(c);
+	public void clear(){
+		stopThreads();
+		removeAllPlayers();
 		boardCards.clear();
+		deck = new Deck();
 	}
 
 	/**
