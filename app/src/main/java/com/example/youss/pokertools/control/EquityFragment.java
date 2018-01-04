@@ -189,6 +189,7 @@ public class EquityFragment extends Fragment implements Observer{
                     return;
                 }
                 if(phase == PHASE_RIVER){
+                    initTime = System.currentTimeMillis();
                     equityProcessor.calculateFinalEquity(numPlayers, EquityProcessor.GAME_NLHE);
                     return;
                 }
