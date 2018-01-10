@@ -50,9 +50,9 @@ public class EquityFragment extends Fragment implements Observer{
     private static final int PHASE_FLOP = 1;
     private static final int PHASE_TURN = 2;
     private static final int PHASE_RIVER = 3;
-    private static final int MAX_PLAYERS_HE = 9;
+    private static final int MAX_PLAYERS_HE = 6;
     private static final int DEFAULT_STOP_LIMIT = 100000;
-    private static final int DEFAULT_NUM_PLAYERS = 6;
+    private static final int DEFAULT_NUM_PLAYERS = 3;
     private static final int HE_NUM_CARDS = 2;
     private String PHASES[];
     public static final String KEY_STOP_LIMIT = "key_stop_limit";
